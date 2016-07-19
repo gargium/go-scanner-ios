@@ -19,6 +19,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self startLocationManager];
     _mapView.delegate = self;
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [button setTitle:[NSString stringWithFormat:@"yoyoyoyoy"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(buttonLog:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_mapView];
+    [button setBackgroundColor:[UIColor redColor]];
+    [self.view insertSubview:button aboveSubview:_mapView];
+    [_mapView addSubview:button];
+    [_mapView bringSubviewToFront: button];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +35,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) buttonLog: (id) sender {
+    NSLog(@"logged");
+}
 - (void)startLocationManager
 {
     _locationManager = [[CLLocationManager alloc] init];
@@ -41,14 +53,6 @@
     self.mapView.showsBuildings = YES;
     [_locationManager startUpdatingLocation];
 
-//    [self.mapView setCenter:[_mapView.userLocation.coordinate animated:YES];
-    
-//    MKCoordinateSpan span = MKCoordinateSpanMake(30.5982f,0.0001f);
-//    CLLocationCoordinate2D coordinate = {36, 90};
-//    MKCoordinateRegion region = {coordinate, span};
-//    MKCoordinateRegion regionThatFits = [self.mapView regionThatFits:region];
-//    [self.mapView setRegion:regionThatFits animated:YES];
-    
 
 }
      
