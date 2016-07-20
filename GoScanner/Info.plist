@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Pls location pls</string>
+	<string>GoScanner needs access to your location to work.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location dawg</string>
+	<string>GoScanner needs access to your location to work.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
