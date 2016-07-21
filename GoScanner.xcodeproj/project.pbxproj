@@ -16,7 +16,32 @@
 		9E719F6B1D3C678A00489E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E719F691D3C678A00489E37 /* LaunchScreen.storyboard */; };
 		9E719F731D3DE8A100489E37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E719F721D3DE8A100489E37 /* CoreLocation.framework */; };
 		9E719F751D3DE8A900489E37 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E719F741D3DE8A900489E37 /* MapKit.framework */; };
+		D5F9C8F71D4076BD008B6535 /* Pokemon.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F9C8F61D4076BD008B6535 /* Pokemon.pb.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D5F9C8ED1D40756A008B6535 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = ProtocolBuffers;
+		};
+		D5F9C8EF1D40756A008B6535 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C5B03F76125179F30087887C;
+			remoteInfo = UnitTests;
+		};
+		D5F9C8F11D40756A008B6535 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 097A223F1B8B10BB00D02243;
+			remoteInfo = ProtocolBuffers.framework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9E719F551D3C678900489E37 /* GoScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +57,9 @@
 		9E719F6C1D3C678A00489E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E719F721D3DE8A100489E37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9E719F741D3DE8A900489E37 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "../protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
+		D5F9C8F51D4076BD008B6535 /* Pokemon.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pokemon.pb.h; sourceTree = SOURCE_ROOT; };
+		D5F9C8F61D4076BD008B6535 /* Pokemon.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pokemon.pb.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +78,7 @@
 		9E719F4C1D3C678900489E37 = {
 			isa = PBXGroup;
 			children = (
+				D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */,
 				9E719F741D3DE8A900489E37 /* MapKit.framework */,
 				9E719F721D3DE8A100489E37 /* CoreLocation.framework */,
 				9E719F571D3C678A00489E37 /* GoScanner */,
@@ -68,6 +97,7 @@
 		9E719F571D3C678A00489E37 /* GoScanner */ = {
 			isa = PBXGroup;
 			children = (
+				D5F9C8F41D4076A5008B6535 /* Models */,
 				9E719F5B1D3C678A00489E37 /* AppDelegate.h */,
 				9E719F5C1D3C678A00489E37 /* AppDelegate.m */,
 				9E719F5E1D3C678A00489E37 /* ViewController.h */,
@@ -88,6 +118,25 @@
 				9E719F591D3C678A00489E37 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5F9C8E81D40756A008B6535 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5F9C8EE1D40756A008B6535 /* libProtocolBuffers.a */,
+				D5F9C8F01D40756A008B6535 /* UnitTests.xctest */,
+				D5F9C8F21D40756A008B6535 /* ProtocolBuffers.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5F9C8F41D4076A5008B6535 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D5F9C8F51D4076BD008B6535 /* Pokemon.pb.h */,
+				D5F9C8F61D4076BD008B6535 /* Pokemon.pb.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,12 +185,42 @@
 			mainGroup = 9E719F4C1D3C678900489E37;
 			productRefGroup = 9E719F561D3C678900489E37 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D5F9C8E81D40756A008B6535 /* Products */;
+					ProjectRef = D5F9C8E71D40756A008B6535 /* ProtocolBuffers.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9E719F541D3C678900489E37 /* GoScanner */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D5F9C8EE1D40756A008B6535 /* libProtocolBuffers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libProtocolBuffers.a;
+			remoteRef = D5F9C8ED1D40756A008B6535 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5F9C8F01D40756A008B6535 /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = D5F9C8EF1D40756A008B6535 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5F9C8F21D40756A008B6535 /* ProtocolBuffers.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ProtocolBuffers.framework;
+			remoteRef = D5F9C8F11D40756A008B6535 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9E719F531D3C678900489E37 /* Resources */ = {
@@ -164,6 +243,7 @@
 				9E719F601D3C678A00489E37 /* ViewController.m in Sources */,
 				9E719F5D1D3C678A00489E37 /* AppDelegate.m in Sources */,
 				9E719F661D3C678A00489E37 /* GoScanner.xcdatamodeld in Sources */,
+				D5F9C8F71D4076BD008B6535 /* Pokemon.pb.m in Sources */,
 				9E719F5A1D3C678A00489E37 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +399,7 @@
 				9E719F711D3C678A00489E37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
