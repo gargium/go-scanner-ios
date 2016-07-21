@@ -54,36 +54,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bop-tN-9M5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="SsZ-hW-Xnr"/>
-                                    <barButtonItem title="Item" id="djt-9i-hw7"/>
-                                </items>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="756" width="400" height="44"/>
-                                </variation>
-                            </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P8x-iE-d1b">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P8x-iE-d1b">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                                 </variation>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Bop-tN-9M5"/>
-                                <exclude reference="P8x-iE-d1b"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Bop-tN-9M5"/>
-                                <include reference="P8x-iE-d1b"/>
-                            </mask>
-                        </variation>
+                        <constraints>
+                            <constraint firstItem="P8x-iE-d1b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="22c-0G-lyN"/>
+                            <constraint firstItem="P8x-iE-d1b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IQN-iW-rmm"/>
+                            <constraint firstAttribute="trailing" secondItem="P8x-iE-d1b" secondAttribute="trailing" id="UBT-eA-wce"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P8x-iE-d1b" secondAttribute="bottom" id="yIg-4M-BTN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokéworld" id="jxY-dJ-OOj">
                         <barButtonItem key="leftBarButtonItem" image="Settings" id="KT4-go-za9">

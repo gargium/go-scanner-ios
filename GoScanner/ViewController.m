@@ -23,6 +23,14 @@
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     [button setTitle:[NSString stringWithFormat:@"yoyoyoyoy"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonLog:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenWidth = screenRect.size.width;
+//    CGFloat screenHeight = screenRect.size.height;
+//    
+//    [_mapView removeConstraints:_mapView.constraints ];
+//    [_mapView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    
     [self.view addSubview:_mapView];
     [button setBackgroundColor:[UIColor redColor]];
     [self.view insertSubview:button aboveSubview:_mapView];
