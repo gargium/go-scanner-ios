@@ -33,14 +33,15 @@
     _mapView.delegate = self;
     [self.view addSubview:_mapView];
     
+    
     //POST request attempt lol
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    NSString *post = [NSString stringWithFormat:@"userHash:%@&pwHash:%@&longitude:%@&latitude:%@&altitude:%@",[defaults objectForKey:@"username"],[defaults objectForKey:@"password"],[defaults objectForKey:@"longitude"],[defaults objectForKey:@"latitude"],[defaults objectForKey:@"altitude"]];
+    NSString *post = [NSString stringWithFormat:@"userHash=%@&pwHash=%@&longitude=%@&latitude=%@&altitude=%@&radius=1.0&tileNum=-1",[defaults objectForKey:@"username"],[defaults objectForKey:@"password"],[defaults objectForKey:@"longitude"],[defaults objectForKey:@"latitude"],[defaults objectForKey:@"altitude"]];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"pogo-scanner-server.herokuapp.com/api/scan/"]];
+    [request setURL:[NSURL URLWithString:@"https://pogo-scanner-server.herokuapp.com/api/scan"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -100,11 +101,16 @@
 //Delegate method to receive data from server
 // This method is used to receive the data which we get using post method.
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
-    
+    if (data) {
+        NSLog(@"got data back: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    }
 }
 
 // This method receives the error report in case of connection is not made to server.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    if (error) {
+        NSLog(@"got error back: %@", error);
+    }
     
 }
 
