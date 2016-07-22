@@ -11,6 +11,9 @@
 @interface SearchViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIButton *submitbtn;
+- (IBAction)submitPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *dirlabel;
 
 @end

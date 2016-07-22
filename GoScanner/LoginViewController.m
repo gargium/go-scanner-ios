@@ -16,13 +16,61 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 
+    [_pwdField setDelegate:self];
+    [_username setDelegate:self];
+    
     _pwdField.secureTextEntry = YES;
+    [self.view setBackgroundColor:[UIColor colorWithRed: (46/255.0) green:(204/255.0) blue:(113/255.0) alpha:1]];
+    
+    [_submitBtn setBackgroundColor:[UIColor colorWithRed: (39/255.0) green:(174/255.0) blue:(96/255.0) alpha:1]];
+    [_submitBtn setTitle:@">" forState:UIControlStateNormal];
+    
+    [_username setBorderStyle:UITextBorderStyleNone];
+    [_pwdField setBorderStyle:UITextBorderStyleNone];
+    [_username setFont:[UIFont fontWithName:@"Montserrat-Regular" size:14]];
+    [_pwdField setFont:[UIFont fontWithName:@"Montserrat-Regular" size:14]];
     
     
+    [_username setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [_pwdField setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [_username setTextColor:[UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1]];
+    [_pwdField setTextColor:[UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1]];
+
 
 }
 
+-(void)dismissKeyboard {
+    [_username resignFirstResponder];
+    [_pwdField resignFirstResponder];
+}
+
+-(void)autoLogin {
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def synchronize];
+    
+    if ([def objectForKey:@"username"] && [def objectForKey:@"password"]) {
+        NSLog(@"user already logged in, auto logging in ...");
+        [self performSegueWithIdentifier:@"loginSuccess" sender:self];
+    }
+}
+-(void)viewDidAppear:(BOOL)animated {
+    [self autoLogin];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Please create a new trainer club account to avoid your own being linked with this potentially unsupported and unofficial service." preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Acknowledged" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -67,5 +115,11 @@
     NSLog(@"stored username: %@", [defaults objectForKey:@"username"]);
     NSLog(@"stored password: %@", [defaults objectForKey:@"password"]);
     
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self submitBtnClicked:self];
+    return YES;
 }
 @end
