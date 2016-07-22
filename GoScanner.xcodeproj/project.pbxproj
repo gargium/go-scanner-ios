@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8719D05A65EF486673F2D71E /* libPods-GoScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FBDFAF9ECE6927A0537777 /* libPods-GoScanner.a */; };
 		9E719F5A1D3C678A00489E37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E719F591D3C678A00489E37 /* main.m */; };
 		9E719F5D1D3C678A00489E37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E719F5C1D3C678A00489E37 /* AppDelegate.m */; };
 		9E719F601D3C678A00489E37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E719F5F1D3C678A00489E37 /* ViewController.m */; };
@@ -19,9 +20,13 @@
 		9E719F781D407E9A00489E37 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E719F771D407E9A00489E37 /* SearchViewController.m */; };
 		9E719F9E1D409CA700489E37 /* pokemon.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E719F9D1D409CA700489E37 /* pokemon.json */; };
 		9E719FA11D409CB800489E37 /* GoScanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E719F9F1D409CB800489E37 /* GoScanner.xcdatamodeld */; };
+		9E719FA31D41C6EE00489E37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E719FA21D41C6EE00489E37 /* GoogleService-Info.plist */; };
+		9E82A56E1D41CA2C00794B02 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82A56D1D41CA2C00794B02 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59FBDFAF9ECE6927A0537777 /* libPods-GoScanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoScanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		923258AF373F087FE8677653 /* Pods-GoScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoScanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoScanner/Pods-GoScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		9E719F551D3C678900489E37 /* GoScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E719F591D3C678A00489E37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E719F5B1D3C678A00489E37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +44,10 @@
 		9E719F771D407E9A00489E37 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		9E719F9D1D409CA700489E37 /* pokemon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pokemon.json; path = GoScanner/pokemon.json; sourceTree = "<group>"; };
 		9E719FA01D409CB800489E37 /* GoScanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoScanner.xcdatamodel; sourceTree = "<group>"; };
+		9E719FA21D41C6EE00489E37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E82A56C1D41CA2C00794B02 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9E82A56D1D41CA2C00794B02 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A515BAACA5F6A4F563F9F080 /* Pods-GoScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoScanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoScanner/Pods-GoScanner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +57,7 @@
 			files = (
 				9E719F751D3DE8A900489E37 /* MapKit.framework in Frameworks */,
 				9E719F731D3DE8A100489E37 /* CoreLocation.framework in Frameworks */,
+				8719D05A65EF486673F2D71E /* libPods-GoScanner.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,12 +67,15 @@
 		9E719F4C1D3C678900489E37 = {
 			isa = PBXGroup;
 			children = (
+				9E719FA21D41C6EE00489E37 /* GoogleService-Info.plist */,
 				9E719F9D1D409CA700489E37 /* pokemon.json */,
 				9E719F9F1D409CB800489E37 /* GoScanner.xcdatamodeld */,
 				9E719F741D3DE8A900489E37 /* MapKit.framework */,
 				9E719F721D3DE8A100489E37 /* CoreLocation.framework */,
 				9E719F571D3C678A00489E37 /* GoScanner */,
 				9E719F561D3C678900489E37 /* Products */,
+				DA146C6153233759B85B889B /* Pods */,
+				B147742233E615F4C3479B7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +95,8 @@
 				9E719F5E1D3C678A00489E37 /* ViewController.h */,
 				9E719F5F1D3C678A00489E37 /* ViewController.m */,
 				9E719F611D3C678A00489E37 /* Main.storyboard */,
+				9E82A56C1D41CA2C00794B02 /* LoginViewController.h */,
+				9E82A56D1D41CA2C00794B02 /* LoginViewController.m */,
 				9E719F761D407E9A00489E37 /* SearchViewController.h */,
 				9E719F771D407E9A00489E37 /* SearchViewController.m */,
 				9E719F671D3C678A00489E37 /* Assets.xcassets */,
@@ -101,6 +116,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B147742233E615F4C3479B7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59FBDFAF9ECE6927A0537777 /* libPods-GoScanner.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA146C6153233759B85B889B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				923258AF373F087FE8677653 /* Pods-GoScanner.debug.xcconfig */,
+				A515BAACA5F6A4F563F9F080 /* Pods-GoScanner.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,9 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E719F6F1D3C678A00489E37 /* Build configuration list for PBXNativeTarget "GoScanner" */;
 			buildPhases = (
+				A821A3843B236FD590509EFB /* [CP] Check Pods Manifest.lock */,
 				9E719F511D3C678900489E37 /* Sources */,
 				9E719F521D3C678900489E37 /* Frameworks */,
 				9E719F531D3C678900489E37 /* Resources */,
+				3D37D90923E77F5DB466F8BD /* [CP] Embed Pods Frameworks */,
+				2E1DABD6099E9C5B4B52AEDB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,12 +196,61 @@
 			files = (
 				9E719F6B1D3C678A00489E37 /* LaunchScreen.storyboard in Resources */,
 				9E719F9E1D409CA700489E37 /* pokemon.json in Resources */,
+				9E719FA31D41C6EE00489E37 /* GoogleService-Info.plist in Resources */,
 				9E719F681D3C678A00489E37 /* Assets.xcassets in Resources */,
 				9E719F631D3C678A00489E37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E1DABD6099E9C5B4B52AEDB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoScanner/Pods-GoScanner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D37D90923E77F5DB466F8BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoScanner/Pods-GoScanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A821A3843B236FD590509EFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9E719F511D3C678900489E37 /* Sources */ = {
@@ -177,6 +261,7 @@
 				9E719F5D1D3C678A00489E37 /* AppDelegate.m in Sources */,
 				9E719FA11D409CB800489E37 /* GoScanner.xcdatamodeld in Sources */,
 				9E719F781D407E9A00489E37 /* SearchViewController.m in Sources */,
+				9E82A56E1D41CA2C00794B02 /* LoginViewController.m in Sources */,
 				9E719F661D3C678A00489E37 /* GoScanner.xcdatamodeld in Sources */,
 				9E719F5A1D3C678A00489E37 /* main.m in Sources */,
 			);
@@ -288,10 +373,12 @@
 		};
 		9E719F701D3C678A00489E37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 923258AF373F087FE8677653 /* Pods-GoScanner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GoScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Gargium.GoScanner;
@@ -302,10 +389,12 @@
 		};
 		9E719F711D3C678A00489E37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A515BAACA5F6A4F563F9F080 /* Pods-GoScanner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GoScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Gargium.GoScanner;

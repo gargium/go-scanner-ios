@@ -18,24 +18,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self startLocationManager];
+    
     _mapView.delegate = self;
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    [button setTitle:[NSString stringWithFormat:@"yoyoyoyoy"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(buttonLog:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenWidth = screenRect.size.width;
-//    CGFloat screenHeight = screenRect.size.height;
-//    
-//    [_mapView removeConstraints:_mapView.constraints ];
-//    [_mapView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+
     
     [self.view addSubview:_mapView];
-    [button setBackgroundColor:[UIColor redColor]];
-    [self.view insertSubview:button aboveSubview:_mapView];
-    [_mapView addSubview:button];
-    [_mapView bringSubviewToFront: button];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +43,7 @@
     
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
-    
+
     self.mapView.showsUserLocation = YES;
     self.mapView.showsCompass = YES;
     self.mapView.showsBuildings = YES;
@@ -68,8 +56,8 @@
 {
     MKCoordinateRegion mapRegion ;
     mapRegion.center = _mapView.userLocation.coordinate;
-    mapRegion.span.latitudeDelta = 0.2;
-    mapRegion.span.longitudeDelta = 0.2;
+    mapRegion.span.latitudeDelta = 0.01;
+    mapRegion.span.longitudeDelta = 0.01;
     
     [_mapView setRegion:mapRegion animated: YES];
 }

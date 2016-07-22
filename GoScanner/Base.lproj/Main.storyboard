@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wfE-rw-ZD7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fpr-X9-tuL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -146,6 +146,55 @@
             </objects>
             <point key="canvasLocation" x="501" y="739"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="U3y-7h-1Ip">
+            <objects>
+                <viewController id="Fpr-X9-tuL" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VIq-fo-V3f"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Lo-SC-eD1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UoQ-8Y-bWZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cTw-ZQ-ObV">
+                                <rect key="frame" x="259" y="331" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please input your trainer club information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuR-sY-WP7">
+                                <rect key="frame" x="143" y="213" width="314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HW-Y9-3ZS">
+                                <rect key="frame" x="292" y="369" width="30" height="30"/>
+                                <state key="normal" title="-&gt;"/>
+                                <connections>
+                                    <action selector="submitBtnClicked:" destination="Fpr-X9-tuL" eventType="touchUpInside" id="QGd-t6-yfm"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctk-on-TFm">
+                                <rect key="frame" x="259" y="276" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pwdField" destination="cTw-ZQ-ObV" id="uA7-x8-Xbs"/>
+                        <outlet property="submitBtn" destination="0HW-Y9-3ZS" id="oXn-D4-eDw"/>
+                        <outlet property="username" destination="ctk-on-TFm" id="V6l-fz-fX1"/>
+                        <segue destination="wfE-rw-ZD7" kind="presentation" identifier="loginSuccess" modalTransitionStyle="crossDissolve" id="JoR-bu-i8b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bPZ-SA-60k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-941" y="-598"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eRv-3l-Mpb">
             <objects>
@@ -205,6 +254,6 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RC6-x2-rvw"/>
+        <segue reference="JoR-bu-i8b"/>
     </inferredMetricsTieBreakers>
 </document>

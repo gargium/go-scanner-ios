@@ -8,6 +8,16 @@
 
 #import "AppDelegate.h"
 
+//pogo-scanner-server.herokuapp.com/api/scan/post/
+/*
+ userHash:shivandyrak
+ pwHash:degenerates
+ longitude:-121.89
+ latitude:37.34
+ altitude:13.0
+ radius:1.0
+ tileNum:-1*/
+
 @interface AppDelegate ()
 
 @end
@@ -16,7 +26,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSError* configureError;
+    [[GGLContext sharedInstance] configureWithError: &configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    [GIDSignIn sharedInstance].delegate = self;
+    
     return YES;
 }
 
@@ -43,6 +58,9 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+
+
 
 #pragma mark - Core Data stack
 
