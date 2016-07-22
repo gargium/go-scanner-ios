@@ -8,15 +8,7 @@
 
 #import "AppDelegate.h"
 
-//pogo-scanner-server.herokuapp.com/api/scan/post/
-/*
- userHash:shivandyrak
- pwHash:degenerates
- longitude:-121.89
- latitude:37.34
- altitude:13.0
- radius:1.0
- tileNum:-1*/
+
 
 @interface AppDelegate ()
 

@@ -10,7 +10,7 @@
 @import CoreLocation;
 @import MapKit;
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate> {
+@interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, NSURLConnectionDelegate> {
     
 }
 @property CLLocationManager* locationManager;
