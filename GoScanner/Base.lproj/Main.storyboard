@@ -17,7 +17,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Pokéworld-->
+        <!--Poké Seeker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -44,13 +44,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P8x-iE-d1b" secondAttribute="bottom" id="yIg-4M-BTN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokéworld" id="jxY-dJ-OOj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="v1H-Yx-yEP">
-                            <connections>
-                                <segue destination="ZTw-ZN-IF9" kind="presentation" id="LSq-N7-ywW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Poké Seeker" id="jxY-dJ-OOj"/>
                     <connections>
                         <outlet property="mapView" destination="P8x-iE-d1b" id="4b2-Ay-W7K"/>
                     </connections>
@@ -59,7 +53,7 @@
             </objects>
             <point key="canvasLocation" x="509" y="-598"/>
         </scene>
-        <!--Pokésearch-->
+        <!--Poké Search-->
         <scene sceneID="YJB-mE-TFt">
             <objects>
                 <viewController id="QKU-Mt-R7A" customClass="SearchViewController" sceneMemberID="viewController">
@@ -147,7 +141,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokésearch" id="n2v-ZO-fEr">
+                    <navigationItem key="navigationItem" title="Poké Search" id="n2v-ZO-fEr">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="stop" id="4Bp-i2-W1S">
                             <connections>
                                 <segue destination="wfE-rw-ZD7" kind="presentation" modalTransitionStyle="crossDissolve" id="RC6-x2-rvw"/>
