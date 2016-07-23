@@ -61,13 +61,17 @@
     }
 }
 -(void)viewDidAppear:(BOOL)animated {
-    [self autoLogin];
+    //[self autoLogin];
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Please create a new trainer club account to avoid your own being linked with this potentially unsupported and unofficial service." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Please create a new Trainer Club account before using this service to avoid your own being linked with this unofficial app." preferredStyle:UIAlertControllerStyleAlert];
 
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Acknowledged" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }]];
+    
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"Create New Account" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
+//    }]];
     
     [self presentViewController:alertController animated:YES completion:nil];
 }

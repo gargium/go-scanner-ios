@@ -17,31 +17,6 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Settings-->
-        <scene sceneID="y4w-VD-6Fh">
-            <objects>
-                <viewController id="0aH-mB-5CN" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qiy-84-r6g"/>
-                        <viewControllerLayoutGuide type="bottom" id="E1P-k2-ysz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CVJ-7d-wve">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Wxu-z2-jfV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ot6-4C-ZfJ">
-                            <connections>
-                                <segue destination="wfE-rw-ZD7" kind="presentation" id="Nab-gD-0Rb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7s0-TM-mT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="501" y="83"/>
-        </scene>
         <!--Pokéworld-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -70,11 +45,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokéworld" id="jxY-dJ-OOj">
-                        <barButtonItem key="leftBarButtonItem" image="Settings" id="KT4-go-za9">
-                            <connections>
-                                <segue destination="SwQ-kv-zPz" kind="presentation" id="SI8-BH-ODG"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="v1H-Yx-yEP">
                             <connections>
                                 <segue destination="ZTw-ZN-IF9" kind="presentation" id="LSq-N7-ywW"/>
@@ -194,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNH-ho-P8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="501" y="739"/>
+            <point key="canvasLocation" x="509" y="147"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="U3y-7h-1Ip">
@@ -323,30 +293,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMm-v6-lf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="739"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fZW-CE-GJP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SwQ-kv-zPz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LeY-bg-vht">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0aH-mB-5CN" kind="relationship" relationship="rootViewController" id="qCH-bq-sqY"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eJu-OI-tDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-204" y="73"/>
+            <point key="canvasLocation" x="-204" y="171"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Settings" width="25" height="25"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qIY-Hj-nEm"/>
     </inferredMetricsTieBreakers>
