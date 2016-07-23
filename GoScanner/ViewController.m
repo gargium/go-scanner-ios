@@ -28,6 +28,11 @@
     UIBarButtonItem * scanButton;
     NSDictionary *rarityDex;
     int responseCounter;
+    UIView *onboarding;
+    UILabel *welcome;
+    UITextView *legend;
+    UITextView *legendDesc;
+    UITextView *done;
 }
 
 @end
@@ -37,6 +42,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
+    [self showOnboarding];
+    
     currentTileNum = -2;
     responseCounter = 0;
      pokedex = @[@"", @"Bulbasaur",@"Ivysaur",@"Venusaur",@"Charmander",@"Charmeleon",@"Charizard",@"Squirtle",@"Wartortle",@"Blastoise",@"Caterpie",@"Metapod",@"Butterfree",@"Weedle",@"Kakuna",@"Beedrill",@"Pidgey",@"Pidgeotto",@"Pidgeot",@"Rattata",@"Raticate",@"Spearow",@"Fearow",@"Ekans",@"Arbok",@"Pikachu",@"Raichu",@"Sandshrew",@"Sandslash",@"Nidoran♀",@"Nidorina",@"Nidoqueen",@"Nidoran♂",@"Nidorino",@"Nidoking",@"Clefairy",@"Clefable",@"Vulpix",@"Ninetales",@"Jigglypuff",@"Wigglytuff",@"Zubat",@"Golbat",@"Oddish",@"Gloom",@"Vileplume",@"Paras",@"Parasect",@"Venonat",@"Venomoth",@"Diglett",@"Dugtrio",@"Meowth",@"Persian",@"Psyduck",@"Golduck",@"Mankey",@"Primeape",@"Growlithe",@"Arcanine",@"Poliwag",@"Poliwhirl",@"Poliwrath",@"Abra",@"Kadabra",@"Alakazam",@"Machop",@"Machoke",@"Machamp",@"Bellsprout",@"Weepinbell",@"Victreebel",@"Tentacool",@"Tentacruel",@"Geodude",@"Graveler",@"Golem",@"Ponyta",@"Rapidash",@"Slowpoke",@"Slowbro",@"Magnemite",@"Magneton",@"Farfetch'd",@"Doduo",@"Dodrio",@"Seel",@"Dewgong",@"Grimer",@"Muk",@"Shellder",@"Cloyster",@"Gastly",@"Haunter",@"Gengar",@"Onix",@"Drowzee",@"Hypno",@"Krabby",@"Kingler",@"Voltorb",@"Electrode",@"Exeggcute",@"Exeggutor",@"Cubone",@"Marowak",@"Hitmonlee",@"Hitmonchan",@"Lickitung",@"Koffing",@"Weezing",@"Rhyhorn",@"Rhydon",@"Chansey",@"Tangela",@"Kangaskhan",@"Horsea",@"Seadra",@"Goldeen",@"Seaking",@"Staryu",@"Starmie",@"Mr. Mime",@"Scyther",@"Jynx",@"Electabuzz",@"Magmar",@"Pinsir",@"Tauros",@"Magikarp",@"Gyarados",@"Lapras",@"Ditto",@"Eevee",@"Vaporeon",@"Jolteon",@"Flareon",@"Porygon",@"Omanyte",@"Omastar",@"Kabuto",@"Kabutops",@"Aerodactyl",@"Snorlax",@"Articuno",@"Zapdos",@"Moltres",@"Dratini",@"Dragonair",@"Dragonite",@"Mewtwo",@"Mew"];
@@ -51,6 +59,144 @@
     scanButton = [[UIBarButtonItem alloc] initWithTitle:@"Scan" style:UIBarButtonItemStylePlain target:self action:@selector(runTiles)];
     [self navigationItem].leftBarButtonItem = scanButton;
 
+}
+
+- (void) showOnboarding {
+    onboarding = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    [onboarding setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
+    [onboarding setUserInteractionEnabled:YES];
+    [self.navigationController.view addSubview:onboarding];
+    NSLog(@"made subview");
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
+    tapped.delegate = self;
+    tapped.numberOfTapsRequired = 1;
+    [onboarding addGestureRecognizer:tapped];
+    [self setUpOnboardingText];
+}
+
+- (void) setUpOnboardingText {
+    
+    //legend of rarity, red - very rare, blue - rare, green - uncommon, white - common, grey- very common
+    //legend of hit "scan button" to start finding pokemon
+    //prompt user to dismiss screen by tapping it.
+    
+    float width = [UIScreen mainScreen].bounds.size.width;
+    float height = [UIScreen mainScreen].bounds.size.height;
+    float padding = 20.0;
+    float effective_w = width - 2*padding;
+    float yMargin = (.10 * height);
+    
+    welcome = [[UILabel alloc] initWithFrame:CGRectMake(padding, yMargin, effective_w, 20)];
+    [welcome setText:@"Welcome to Go Scanner!"];
+    [welcome setTextAlignment:NSTextAlignmentCenter];
+    [welcome setTextColor:[UIColor whiteColor]];
+    [onboarding addSubview:welcome];
+    
+    legendDesc = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+80, effective_w, 70)];
+    [legendDesc setText:@"Go Scanner will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
+    legend = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+200, effective_w, 200)];
+    done = [[UITextView alloc] initWithFrame:CGRectMake(padding, height-100-padding, effective_w, 100)];
+    [done setText:@"Hit the 'Scan' button to start catching Pokémon! Tap anywhere to dismiss this screen."];
+    [done setTextAlignment:NSTextAlignmentCenter];
+    [done setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [done setTextColor:[UIColor whiteColor]];
+    [done setEditable:NO];
+    [legendDesc setEditable:NO];
+    [done setFont:[UIFont fontWithName:@"Montserrat-Regular" size:16]];
+    [welcome setTextAlignment:NSTextAlignmentCenter];
+    [legendDesc setTextAlignment:NSTextAlignmentCenter];
+    [legendDesc setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [legend setTextColor:[UIColor whiteColor]];
+    [welcome setTextColor:[UIColor whiteColor]];
+    [legendDesc setTextColor:[UIColor whiteColor]];
+    [legendDesc setFont:[UIFont fontWithName:@"Montserrat-Regular" size:16]];
+    [welcome setFont:[UIFont fontWithName:@"Montserrat-Regular" size:24]];
+    
+    
+    //set the colors
+    NSString *text = @"Red: Very rare\n\nBlue: Rare\n\nGreen: Uncommon\n\nBrown: Common\n\nGrey: Very Common";
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:text];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(Red)" options:kNilOptions error:nil];
+    NSRange range = NSMakeRange(0 ,text.length);
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Blue)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Green)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Brown)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor brownColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Grey)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Very rare)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Rare)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Uncommon)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Common)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:subStringRange];
+    }];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"(Very Common)" options:kNilOptions error:nil];
+    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange subStringRange = [result rangeAtIndex:0];
+        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:subStringRange];
+    }];
+    
+    [legend setAttributedText:mutableAttributedString];
+    [legend setFont:[UIFont fontWithName:@"Montserrat-Regular" size:16]];
+    [legend setEditable:NO];
+    [legend setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [legend setTextAlignment:NSTextAlignmentCenter];
+
+    [onboarding addSubview:welcome];
+    [onboarding addSubview:legend];
+    [onboarding addSubview:legendDesc];
+    [onboarding addSubview:done];
+    
+    
+    
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ((touch.view==onboarding && onboarding) || (touch.view==welcome && onboarding)  || (touch.view==legend && onboarding)  || (touch.view==legendDesc && onboarding) ||(touch.view==done && onboarding) ) {
+        NSLog(@"detected a touch");
+        return YES;
+    }
+    NSLog(@"didnt see a touch");
+    return NO;
+}
+
+-(void)tapMethod {
+    [onboarding removeFromSuperview];
+    onboarding=nil;
+    NSLog(@"removed onboard");
 }
 
 - (void) runTiles {
@@ -236,7 +382,7 @@
                 break;
             }
             case 4: {
-                pinView.pinTintColor = [UIColor purpleColor];
+                pinView.pinTintColor = [UIColor redColor];
                 [p_a setSubtitle:@"Very Rare"];
                 break;
             }
