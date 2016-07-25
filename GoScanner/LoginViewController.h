@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate, NSURLConnectionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;

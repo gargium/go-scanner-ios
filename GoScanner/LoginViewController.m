@@ -108,16 +108,25 @@
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    [self performSegueWithIdentifier:@"loginSuccess" sender:self];
     
-    NSLog(@"bye");
+    // post to /login and verify details
+    NSString *post = [NSString stringWithFormat:@"userHash=%@&pwHash=%@",_username.text, _pwdField.text];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"https://pogo-scanner-server.herokuapp.com/api/login"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:_username.text forKey:@"username"];
-    [defaults setObject:_pwdField.text forKey:@"password"];
-    [defaults synchronize];
-    NSLog(@"stored username: %@", [defaults objectForKey:@"username"]);
-    NSLog(@"stored password: %@", [defaults objectForKey:@"password"]);
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if(conn) {
+        NSLog(@"Request made successfully");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+
     
 }
 
@@ -126,4 +135,55 @@
     [self submitBtnClicked:self];
     return YES;
 }
+
+
+# pragma - Delegate methods
+- (void)connection:(NSURLConnection *)connection didReceiveData:(nonnull NSData *)data
+{
+    // check if request was for login
+    NSString *path = [[[connection currentRequest] URL] path];
+    if ([path isEqualToString:@"/api/login"])
+    {
+        NSError *jsonParsingError = nil;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+        
+        NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
+        if (jsonParsingError) NSLog(@"%@", jsonParsingError);
+        
+        if (statusCode == 300)
+        {
+            [self performSegueWithIdentifier:@"loginSuccess" sender:self];
+            
+            NSLog(@"bye");
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:_username.text forKey:@"username"];
+            [defaults setObject:_pwdField.text forKey:@"password"];
+            [defaults synchronize];
+            NSLog(@"stored username: %@", [defaults objectForKey:@"username"]);
+            NSLog(@"stored password: %@", [defaults objectForKey:@"password"]);
+        }
+        else {
+            NSString *alertTitle = @"Error";
+            NSString *alertMsg = @"Login error";
+            
+            if (statusCode == 200) { // incorrect user/pw
+                alertMsg = @"Not a valid Pokemon Trainer Club account. Sign up for one on the official Pokemon website.";
+            }
+            else if (statusCode == 201) // inactivated count
+            {
+                alertTitle = @"Uh oh!";
+                alertMsg = @"Looks like this Trainer Club account has not been activated. Please confirm using the email received when you signed up.";
+            }
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMsg preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+}
+
 @end

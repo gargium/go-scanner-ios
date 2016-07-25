@@ -33,6 +33,9 @@
     UITextView *legend;
     UITextView *legendDesc;
     UITextView *done;
+    NSTimer *jobTimer;
+    NSMutableSet *jobSet;
+    NSInteger timeout;
 }
 
 @end
@@ -41,7 +44,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    timeout = 0;
+    jobSet = [[NSMutableSet alloc] init];
 
     [self showOnboarding];
     
@@ -66,7 +70,6 @@
     [onboarding setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
     [onboarding setUserInteractionEnabled:YES];
     [self.navigationController.view addSubview:onboarding];
-    NSLog(@"made subview");
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
     tapped.delegate = self;
     tapped.numberOfTapsRequired = 1;
@@ -87,16 +90,16 @@
     float yMargin = (.10 * height);
     
     welcome = [[UILabel alloc] initWithFrame:CGRectMake(padding, yMargin, effective_w, 20)];
-    [welcome setText:@"Welcome to Go Scanner!"];
+    [welcome setText:@"Welcome to Poké Seeker!"];
     [welcome setTextAlignment:NSTextAlignmentCenter];
     [welcome setTextColor:[UIColor whiteColor]];
     [onboarding addSubview:welcome];
     
     legendDesc = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+80, effective_w, 70)];
-    [legendDesc setText:@"Go Scanner will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
+    [legendDesc setText:@"Poké Seeker will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
     legend = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+200, effective_w, 200)];
     done = [[UITextView alloc] initWithFrame:CGRectMake(padding, height-100-padding, effective_w, 100)];
-    [done setText:@"Hit the 'Scan' button to start catching Pokémon! Tap anywhere to dismiss this screen."];
+    [done setText:@"Hit the 'Scan' button and wait 1-2 minutes for the map to load. Tap anywhere to dismiss this screen."];
     [done setTextAlignment:NSTextAlignmentCenter];
     [done setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
     [done setTextColor:[UIColor whiteColor]];
@@ -196,7 +199,6 @@
 -(void)tapMethod {
     [onboarding removeFromSuperview];
     onboarding=nil;
-    NSLog(@"removed onboard");
 }
 
 - (void) runTiles {
@@ -232,13 +234,16 @@
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if(conn) {
-        NSLog(@"Connection Successful");
     } else {
         NSLog(@"Connection could not be made");
     }
 }
 
 - (void) parseData:(NSData*)data {
+    // get job key and add to global stack
+    
+    
+    
     NSError *jsonParsingError = nil;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
     
@@ -253,10 +258,6 @@
             NSNumber *poke_long = [poke_report objectForKey:@"long"];
             NSNumber *poke_duration = [poke_report objectForKey:@"duration"];
             if (poke_name) {
-                NSLog(@"found a name %@", poke_name);
-                NSLog(@"found a lat %@", poke_lat);
-                NSLog(@"found a long %@", poke_long);
-                NSLog(@"found a duration %@", poke_duration);
                 [self drawMarkersForLat:poke_lat.doubleValue lon:poke_long.doubleValue title:[pokedex objectAtIndex:poke_name.integerValue]];
             }
         }
@@ -264,6 +265,36 @@
         NSLog(@"Response Code: %@", responseCode);
     }
 
+}
+
+- (void)pollResponse
+{
+    for(NSString *jobId in jobSet)
+    {
+        // GET request for that job
+        NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://pogo-scanner-server.herokuapp.com/results/"];
+        [urlString appendString:jobId];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setHTTPMethod:@"GET"];
+        
+        NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        if(conn) {
+        } else {
+            NSLog(@"Connection could not be made");
+        }
+    }
+    timeout++;
+    if (timeout > 60 || [jobSet count] == 0)
+    {
+        [jobTimer invalidate];
+        [spinner stopAnimating];
+        scanButton.customView = nil;
+        [scanButton setTitle:@"Scan"];
+        [scanButton setEnabled:YES];
+        
+    }
 }
 
 
@@ -281,7 +312,6 @@
             [addAnnotation setTitle:title];
             [_mapView addAnnotation:addAnnotation];
             //add annotation to an array in order to remove before second scan is called
-            NSLog(@"search completed");
             return;
         }
     }
@@ -301,7 +331,6 @@
 }
 
 -(void) buttonLog: (id) sender {
-    NSLog(@"logged");
 }
 - (void)startLocationManager
 {
@@ -336,16 +365,43 @@
 // This method is used to receive the data which we get using post method.
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
     if (data) {
-        NSLog(@"got data back: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    }
+    
+    NSString *method = [[connection currentRequest] HTTPMethod];
+    if ([method isEqualToString:@"POST"])
+    {
+        NSString *jobID = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [jobSet addObject:jobID];
         responseCounter++;
+        if (responseCounter == 11) // all job IDs received
+        {
+            jobTimer = [NSTimer scheduledTimerWithTimeInterval:7.0 target:self selector:@selector(pollResponse) userInfo:nil repeats:YES];
+        }
     }
-    [self parseData:data];
-    if (responseCounter > 19) {
-        [spinner stopAnimating];
-        scanButton.customView = nil;
-        [scanButton setTitle:@"Scan"];
-        [scanButton setEnabled:YES];
+    else if ([method isEqualToString:@"GET"])
+    {
+        // check if result is done
+        NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if(![responseString isEqualToString:@"Not Done"])
+        {
+            NSLog(@"Got 1 tile back");
+            [self parseData:data];
+            NSURL *requestURL = [[connection currentRequest] URL];
+            NSString *requestPath = [requestURL path];
+            NSString *jobID = [requestPath substringFromIndex:9];
+            [jobSet removeObject:jobID];
+        }
     }
+    
+    
+    //[self parseData:data];
+    
+//    if (responseCounter > 9) {
+//        [spinner stopAnimating];
+//        scanButton.customView = nil;
+//        [scanButton setTitle:@"Scan"];
+//        [scanButton setEnabled:YES];
+//    }
     
 }
 
@@ -369,7 +425,6 @@
     } else if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
         MKPointAnnotation *p_a = annotation;
         NSNumber *rarity = [rarityDex objectForKey:p_a.title];
-        NSLog(@"Rarity: %@", rarity.stringValue);
         //add a subtitle to the annotation to tell user how rare it is
         switch (rarity.integerValue) {
             case 5:
@@ -412,8 +467,6 @@
 //***************LOCATION METHODS*******
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"didUpdateToLocation: %@", newLocation);
-    NSLog(@"altitude: %f", newLocation.altitude);
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
