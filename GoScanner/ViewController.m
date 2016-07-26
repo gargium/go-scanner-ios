@@ -93,13 +93,13 @@
     float yMargin = (.10 * height);
     
     welcome = [[UILabel alloc] initWithFrame:CGRectMake(padding, yMargin, effective_w, 20)];
-    [welcome setText:@"Welcome to Poké Seeker!"];
+    [welcome setText:@"Welcome to PoGo Scanner!"];
     [welcome setTextAlignment:NSTextAlignmentCenter];
     [welcome setTextColor:[UIColor whiteColor]];
     [onboarding addSubview:welcome];
     
     legendDesc = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+80, effective_w, 70)];
-    [legendDesc setText:@"Poké Seeker will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
+    [legendDesc setText:@"PoGo Scanner will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
     legend = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+200, effective_w, 200)];
     done = [[UITextView alloc] initWithFrame:CGRectMake(padding, height-100-padding, effective_w, 100)];
     [done setText:@"Hit the 'Scan' button and wait 1-2 minutes for the map to load. Tap anywhere to dismiss this screen."];
