@@ -44,6 +44,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"%@", self.accessToken);
+    
     timeout = 0;
     jobSet = [[NSMutableSet alloc] init];
 
@@ -216,7 +219,7 @@
     //POST request attempt lol
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    NSString *post = [NSString stringWithFormat:@"userHash=%@&pwHash=%@&longitude=%@&latitude=%@&altitude=%@&tile_1=%d&tile_2=%d",[defaults objectForKey:@"username"],[defaults objectForKey:@"password"],[defaults objectForKey:@"longitude"],[defaults objectForKey:@"latitude"],[defaults objectForKey:@"altitude"], currentTileNum+1, currentTileNum];
+    NSString *post = [NSString stringWithFormat:@"userHash=%@&pwHash=%@&longitude=%@&latitude=%@&altitude=%@&tile_1=%d&tile_2=%d&access_token=%@",[defaults objectForKey:@"username"],[defaults objectForKey:@"password"],[defaults objectForKey:@"longitude"],[defaults objectForKey:@"latitude"],[defaults objectForKey:@"altitude"], currentTileNum+1, currentTileNum, self.accessToken];
     currentTileNum += 2;
     if (currentTileNum > 19) {
         [timer invalidate];

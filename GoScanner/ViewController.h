@@ -13,6 +13,7 @@
 @interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, NSURLConnectionDelegate, UIGestureRecognizerDelegate> {
     
 }
+@property (strong, nonatomic) NSString *accessToken;
 @property CLLocationManager* locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
