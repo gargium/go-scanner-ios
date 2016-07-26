@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:GoScanner.xcodeproj">
+      location = "group:/Users/rakshitgarg/GitHub/go-scanner-ios/PoGo Scanner.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

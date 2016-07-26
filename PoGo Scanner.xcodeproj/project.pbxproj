@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		59FBDFAF9ECE6927A0537777 /* libPods-GoScanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoScanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		923258AF373F087FE8677653 /* Pods-GoScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoScanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoScanner/Pods-GoScanner.debug.xcconfig"; sourceTree = "<group>"; };
-		9E719F551D3C678900489E37 /* GoScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E719F551D3C678900489E37 /* PoGo Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoGo Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E719F591D3C678A00489E37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E719F5B1D3C678A00489E37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E719F5C1D3C678A00489E37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		9E719F561D3C678900489E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E719F551D3C678900489E37 /* GoScanner.app */,
+				9E719F551D3C678900489E37 /* PoGo Scanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E719F541D3C678900489E37 /* GoScanner */ = {
+		9E719F541D3C678900489E37 /* PoGo Scanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E719F6F1D3C678A00489E37 /* Build configuration list for PBXNativeTarget "GoScanner" */;
+			buildConfigurationList = 9E719F6F1D3C678A00489E37 /* Build configuration list for PBXNativeTarget "PoGo Scanner" */;
 			buildPhases = (
 				A821A3843B236FD590509EFB /* [CP] Check Pods Manifest.lock */,
 				9E719F511D3C678900489E37 /* Sources */,
@@ -175,9 +175,9 @@
 			);
 			dependencies = (
 			);
-			name = GoScanner;
+			name = "PoGo Scanner";
 			productName = GoScanner;
-			productReference = 9E719F551D3C678900489E37 /* GoScanner.app */;
+			productReference = 9E719F551D3C678900489E37 /* PoGo Scanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -191,11 +191,11 @@
 				TargetAttributes = {
 					9E719F541D3C678900489E37 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 72BY659P56;
+						DevelopmentTeam = L7YHCJF579;
 					};
 				};
 			};
-			buildConfigurationList = 9E719F501D3C678900489E37 /* Build configuration list for PBXProject "GoScanner" */;
+			buildConfigurationList = 9E719F501D3C678900489E37 /* Build configuration list for PBXProject "PoGo Scanner" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -208,7 +208,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E719F541D3C678900489E37 /* GoScanner */,
+				9E719F541D3C678900489E37 /* PoGo Scanner */,
 			);
 		};
 /* End PBXProject section */
@@ -413,8 +413,8 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GoScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Gargium.GoScanner;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rsa.pogo-scanner";
+				PRODUCT_NAME = "PoGo Scanner";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -429,8 +429,8 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GoScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Gargium.GoScanner;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rsa.pogo-scanner";
+				PRODUCT_NAME = "PoGo Scanner";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -438,7 +438,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E719F501D3C678900489E37 /* Build configuration list for PBXProject "GoScanner" */ = {
+		9E719F501D3C678900489E37 /* Build configuration list for PBXProject "PoGo Scanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E719F6D1D3C678A00489E37 /* Debug */,
@@ -447,7 +447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E719F6F1D3C678A00489E37 /* Build configuration list for PBXNativeTarget "GoScanner" */ = {
+		9E719F6F1D3C678A00489E37 /* Build configuration list for PBXNativeTarget "PoGo Scanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E719F701D3C678A00489E37 /* Debug */,

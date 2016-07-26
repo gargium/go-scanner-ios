@@ -8,7 +8,9 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () {
+    UIActivityIndicatorView *spinner;
+}
 
 @end
 
@@ -80,10 +82,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didTapSignOut:(id)sender {
-    [[GIDSignIn sharedInstance] signOut];
-}
-
 
 /*
 #pragma mark - Navigation
@@ -127,7 +125,12 @@
         NSLog(@"Connection could not be made");
     }
 
-    
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.hidden = NO;
+    spinner.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+    [self.view addSubview:spinner];
+    NSLog(@"start spinner!");
+    [spinner startAnimating];
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -149,7 +152,8 @@
         
         NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
         if (jsonParsingError) NSLog(@"%@", jsonParsingError);
-        
+        [spinner stopAnimating];
+
         if (statusCode == 300)
         {
             [self performSegueWithIdentifier:@"loginSuccess" sender:self];
