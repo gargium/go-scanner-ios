@@ -131,6 +131,7 @@
     [self.view addSubview:spinner];
     NSLog(@"start spinner!");
     [spinner startAnimating];
+    [_submitBtn setHidden: YES];
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -153,6 +154,7 @@
         NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
         if (jsonParsingError) NSLog(@"%@", jsonParsingError);
         [spinner stopAnimating];
+        [_submitBtn setHidden:NO];
 
         if (statusCode == 300)
         {
