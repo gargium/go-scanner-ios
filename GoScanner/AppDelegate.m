@@ -19,11 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError* configureError;
-    [[GGLContext sharedInstance] configureWithError: &configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-    
-    [GIDSignIn sharedInstance].delegate = self;
-    
     return YES;
 }
 
