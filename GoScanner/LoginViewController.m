@@ -76,6 +76,7 @@
 
     [alertController addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        [self submitLogin];
     }]];
     
 //    [alertController addAction:[UIAlertAction actionWithTitle:@"Create New Account" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -100,22 +101,23 @@
 }
 */
 
-- (IBAction)submitBtnClicked:(id)sender {
-    if ([_username.text isEqualToString:@" "] || [_username.text isEqualToString:@""]|| [_pwdField.text isEqualToString:@" "] || [_pwdField.text isEqualToString:@""]) {
-        NSLog(@"hi");
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Both fields must not be empty." preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }]];
-        
-        
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+- (void)submitLogin
+{
+//    if ([_username.text isEqualToString:@" "] || [_username.text isEqualToString:@""]|| [_pwdField.text isEqualToString:@" "] || [_pwdField.text isEqualToString:@""]) {
+//        NSLog(@"hi");
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Both fields must not be empty." preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }]];
+//        
+//        
+//        
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
     
     // post to /login and verify details
-    NSString *post = [NSString stringWithFormat:@"userHash=%@&pwHash=%@",_username.text, _pwdField.text];
+    NSString *post = [NSString stringWithFormat:@""];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -206,12 +208,12 @@
                 [loginTimer invalidate];
                 [self performSegueWithIdentifier:@"loginSuccess" sender:self];
                 
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:_username.text forKey:@"username"];
-                [defaults setObject:_pwdField.text forKey:@"password"];
-                [defaults synchronize];
-                NSLog(@"stored username: %@", [defaults objectForKey:@"username"]);
-                NSLog(@"stored password: %@", [defaults objectForKey:@"password"]);
+//                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                [defaults setObject:_username.text forKey:@"username"];
+//                [defaults setObject:_pwdField.text forKey:@"password"];
+//                [defaults synchronize];
+//                NSLog(@"stored username: %@", [defaults objectForKey:@"username"]);
+//                NSLog(@"stored password: %@", [defaults objectForKey:@"password"]);
             }
             else {
                 NSString *alertTitle = @"Error";

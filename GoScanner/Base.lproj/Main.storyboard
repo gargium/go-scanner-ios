@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Montserrat-ExtraBold.otf">
@@ -172,34 +171,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctk-on-TFm">
-                                <rect key="frame" x="259" y="275" width="97" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QRY-dj-jpR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cTw-ZQ-ObV">
-                                <rect key="frame" x="259" y="331" width="97" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QN1-Vs-Gcj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HW-Y9-3ZS">
-                                <rect key="frame" x="292" y="369" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="VHU-CO-nHh"/>
-                                </constraints>
-                                <state key="normal" title="-&gt;"/>
-                                <connections>
-                                    <action selector="submitBtnClicked:" destination="Fpr-X9-tuL" eventType="touchUpInside" id="QGd-t6-yfm"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Input your Pokemon Trainer Club information." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuR-sY-WP7">
-                                <rect key="frame" x="98" y="135" width="404" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PoGo Scanner" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuR-sY-WP7">
+                                <rect key="frame" x="239" y="135" width="122" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Nj7-Uk-vIO"/>
                                 </constraints>
@@ -216,41 +189,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cuR-sY-WP7" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="20" id="1aN-MQ-yok"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0HW-Y9-3ZS" secondAttribute="trailing" constant="258" id="3pt-f0-7uE"/>
-                            <constraint firstAttribute="trailing" secondItem="0HW-Y9-3ZS" secondAttribute="trailing" constant="10" id="5ds-5l-b2E"/>
-                            <constraint firstItem="0Lo-SC-eD1" firstAttribute="top" secondItem="0HW-Y9-3ZS" secondAttribute="bottom" constant="10" id="7Fv-Gy-0gm"/>
-                            <constraint firstItem="0HW-Y9-3ZS" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="100" id="Agc-Se-9j9"/>
-                            <constraint firstItem="cTw-ZQ-ObV" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="10" id="FyB-qB-MrL"/>
-                            <constraint firstItem="cTw-ZQ-ObV" firstAttribute="top" secondItem="ctk-on-TFm" secondAttribute="bottom" id="GBN-cX-aeG"/>
                             <constraint firstItem="cuR-sY-WP7" firstAttribute="top" secondItem="VIq-fo-V3f" secondAttribute="bottom" constant="115" id="L0A-Ld-AQG"/>
-                            <constraint firstItem="0HW-Y9-3ZS" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leadingMargin" constant="10" id="LEz-2n-XPb"/>
-                            <constraint firstAttribute="trailing" secondItem="ctk-on-TFm" secondAttribute="trailing" constant="10" id="NRf-NE-FLA"/>
-                            <constraint firstItem="cTw-ZQ-ObV" firstAttribute="top" secondItem="ctk-on-TFm" secondAttribute="bottom" constant="10" id="NVt-SY-Xsp"/>
                             <constraint firstAttribute="trailing" secondItem="cuR-sY-WP7" secondAttribute="trailing" constant="20" id="Qtm-ro-skO"/>
-                            <constraint firstAttribute="trailing" secondItem="cTw-ZQ-ObV" secondAttribute="trailing" constant="10" id="To7-dp-OZm"/>
-                            <constraint firstItem="ctk-on-TFm" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="10" id="TvJ-ZM-BOa"/>
-                            <constraint firstItem="0HW-Y9-3ZS" firstAttribute="top" secondItem="ctk-on-TFm" secondAttribute="bottom" constant="100" id="Z21-XY-0ei"/>
-                            <constraint firstItem="cTw-ZQ-ObV" firstAttribute="top" secondItem="ctk-on-TFm" secondAttribute="bottom" id="mxv-WJ-hEL"/>
-                            <constraint firstAttribute="trailing" secondItem="cTw-ZQ-ObV" secondAttribute="trailing" constant="10" id="rJi-GG-Mpr"/>
-                            <constraint firstAttribute="trailing" secondItem="0HW-Y9-3ZS" secondAttribute="trailing" constant="100" id="v9u-We-DFO"/>
-                            <constraint firstItem="ctk-on-TFm" firstAttribute="top" secondItem="cuR-sY-WP7" secondAttribute="bottom" constant="119" id="whS-0A-Lbu"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="NVt-SY-Xsp"/>
-                                <exclude reference="To7-dp-OZm"/>
-                                <exclude reference="mxv-WJ-hEL"/>
-                                <exclude reference="3pt-f0-7uE"/>
-                                <exclude reference="5ds-5l-b2E"/>
-                                <exclude reference="LEz-2n-XPb"/>
-                                <exclude reference="Z21-XY-0ei"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="pwdField" destination="cTw-ZQ-ObV" id="uA7-x8-Xbs"/>
-                        <outlet property="submitBtn" destination="0HW-Y9-3ZS" id="oXn-D4-eDw"/>
-                        <outlet property="username" destination="ctk-on-TFm" id="V6l-fz-fX1"/>
                         <segue destination="wfE-rw-ZD7" kind="presentation" identifier="loginSuccess" modalTransitionStyle="crossDissolve" id="JoR-bu-i8b"/>
                     </connections>
                 </viewController>
