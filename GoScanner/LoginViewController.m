@@ -34,7 +34,6 @@
     [_username setDelegate:self];
     
     _pwdField.secureTextEntry = YES;
-    [self.view setBackgroundColor:[UIColor colorWithRed: (46/255.0) green:(204/255.0) blue:(113/255.0) alpha:1]];
     
     [_submitBtn setBackgroundColor:[UIColor colorWithRed: (39/255.0) green:(174/255.0) blue:(96/255.0) alpha:1]];
     [_submitBtn setTitle:@">" forState:UIControlStateNormal];
@@ -53,6 +52,8 @@
     accessToken = nil;
     loginJobId = nil;
     shouldShowAlert = NO;
+    
+    [self submitLogin];
 }
 
 -(void)dismissKeyboard {
@@ -71,19 +72,19 @@
 }
 -(void)viewDidAppear:(BOOL)animated {
     //[self autoLogin];
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Please create a new Trainer Club account before using this service to avoid your own being linked with this unofficial app." preferredStyle:UIAlertControllerStyleAlert];
-
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self submitLogin];
-    }]];
+//
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Please create a new Trainer Club account before using this service to avoid your own being linked with this unofficial app." preferredStyle:UIAlertControllerStyleAlert];
+//
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//        [self submitLogin];
+//    }]];
     
 //    [alertController addAction:[UIAlertAction actionWithTitle:@"Create New Account" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
 //    }]];
     
-    [self presentViewController:alertController animated:YES completion:nil];
+//    [self presentViewController:alertController animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

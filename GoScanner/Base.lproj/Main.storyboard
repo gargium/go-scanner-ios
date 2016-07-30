@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Montserrat-ExtraBold.otf">
-            <string>Montserrat-ExtraBold</string>
+        <mutableArray key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+            <string>Montserrat-Light</string>
         </mutableArray>
         <mutableArray key="Montserrat-Regular.otf">
             <string>Montserrat-Regular</string>
@@ -83,7 +84,7 @@
                                     <constraint firstAttribute="height" constant="40" id="kcx-0n-v64"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What're you looking for?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95X-gH-Y5a">
@@ -92,7 +93,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ndF-in-Rg4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMu-fz-Avc">
@@ -176,12 +177,26 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Nj7-Uk-vIO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
-                                <color key="textColor" red="0.9676456151832461" green="0.9676456151832461" blue="0.9676456151832461" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.87058823529411766" green="0.34509803921568627" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Nj7-Uk-vIO"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="connecting.." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpy-AX-HRL">
+                                <rect key="frame" x="239" y="171" width="122" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ygt-go-i59"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" red="0.87058823529999996" green="0.34509803919999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ygt-go-i59"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -190,7 +205,10 @@
                         <constraints>
                             <constraint firstItem="cuR-sY-WP7" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="20" id="1aN-MQ-yok"/>
                             <constraint firstItem="cuR-sY-WP7" firstAttribute="top" secondItem="VIq-fo-V3f" secondAttribute="bottom" constant="115" id="L0A-Ld-AQG"/>
+                            <constraint firstItem="Dpy-AX-HRL" firstAttribute="top" secondItem="cuR-sY-WP7" secondAttribute="bottom" constant="15" id="Nfv-hf-dMJ"/>
                             <constraint firstAttribute="trailing" secondItem="cuR-sY-WP7" secondAttribute="trailing" constant="20" id="Qtm-ro-skO"/>
+                            <constraint firstItem="Dpy-AX-HRL" firstAttribute="leading" secondItem="UoQ-8Y-bWZ" secondAttribute="leading" constant="20" id="UAH-sf-i4R"/>
+                            <constraint firstAttribute="trailing" secondItem="Dpy-AX-HRL" secondAttribute="trailing" constant="20" id="na5-Wa-VYQ"/>
                         </constraints>
                     </view>
                     <connections>
