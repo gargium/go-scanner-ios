@@ -92,14 +92,17 @@
     float effective_w = width - 2*padding;
     float yMargin = (.10 * height);
     
-    welcome = [[UILabel alloc] initWithFrame:CGRectMake(padding, yMargin, effective_w, 20)];
+    welcome = [[UILabel alloc] initWithFrame:CGRectMake(padding, yMargin, effective_w, 100)];
     [welcome setText:@"Welcome to PoGo Scanner!"];
     [welcome setTextAlignment:NSTextAlignmentCenter];
     [welcome setTextColor:[UIColor whiteColor]];
+    [welcome setNumberOfLines:2];
+    [welcome setLineBreakMode:NSLineBreakByWordWrapping];
     [onboarding addSubview:welcome];
     
     legendDesc = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+80, effective_w, 70)];
     [legendDesc setText:@"PoGo Scanner will find Pokémon and\ndisplay their locations with color coded pins. Tap the pin to see the Pokémon."];
+    
     legend = [[UITextView alloc] initWithFrame:CGRectMake(padding, yMargin+200, effective_w, 200)];
     done = [[UITextView alloc] initWithFrame:CGRectMake(padding, height-100-padding, effective_w, 100)];
     [done setText:@"Hit the 'Scan' button and wait 1-2 minutes for the map to load. Tap anywhere to dismiss this screen."];
@@ -117,10 +120,11 @@
     [legendDesc setTextColor:[UIColor whiteColor]];
     [legendDesc setFont:[UIFont fontWithName:@"Montserrat-Regular" size:16]];
     [welcome setFont:[UIFont fontWithName:@"Montserrat-Regular" size:24]];
-    
+    [welcome setMinimumScaleFactor:0.5];
+
     
     //set the colors
-    NSString *text = @"Red: Very rare\n\nBlue: Rare\n\nGreen: Uncommon\n\nBrown: Common\n\nGrey: Very Common";
+    NSString *text = @"Red: Very rare\nBlue: Rare\nGreen: Uncommon\nBrown: Common\nGrey: Very Common";
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:text];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(Red)" options:kNilOptions error:nil];
     NSRange range = NSMakeRange(0 ,text.length);
